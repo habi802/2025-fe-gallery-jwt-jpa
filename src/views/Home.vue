@@ -1,6 +1,10 @@
 <script setup>
   import { onMounted, reactive } from 'vue';
   import { getItems } from '@/services/itemService';
+  import { useGlobalErrorStore } from '@/stores/global-error';
+
+  const globalErrorStore = useGlobalErrorStore();
+
   import Card from '@/components/Card.vue';
 
   const state = reactive({
@@ -21,6 +25,10 @@
 </script>
 
 <template>
+  <b-modal v-model="globalErrorStore.state.isShow" ok-only>
+    {{ globalErrorStore.state.errorMessage }}
+  </b-modal>
+
   <div class="home">
     <div class="container">
       <h1 class="mt-5">HELLO, HOME</h1>
