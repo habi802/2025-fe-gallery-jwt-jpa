@@ -3,7 +3,7 @@
   import Footer from './components/Footer.vue';
   import { watch, onMounted } from 'vue';
   import { useRoute } from 'vue-router';
-  import { check } from './services/accountService';
+  //import { check } from './services/accountService';
   import { useAccountStore } from './stores/account';
 
   const route = useRoute();
