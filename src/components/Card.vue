@@ -27,11 +27,6 @@
 
   // 장바구니에 상품 담기
   const put = async () => {
-    if (!accountStore.state.isSigned) {
-      alert('로그인해주세요.');
-      return;
-    }
-
     const res = await addItem(props.item.id);
 
     if (res === undefined) {
@@ -39,9 +34,9 @@
       return;
     } else if (res.status === 500) {
       alert('이미 장바구니에 상품이 담겨져 있습니다.');
-    } else if (confirm('장바구니에 상품을 담았습니다. 장바구니로 이동하시겠습니까?')) {
-      router.push({ path: '/cart' });
+    } else if (res.status === 200 && confirm('장바구니에 상품을 담았습니다. 장바구니로 이동하시겠습니까?')) {
       console.log('카트 담기 성공');
+      router.push({ path: '/cart' });
     }
   };
 </script>

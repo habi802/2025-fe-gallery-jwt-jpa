@@ -20,10 +20,10 @@ axios.interceptors.response.use(res => res, async err => {
             } catch (e) {
                 accountStore.logout();
             }
+        } else {
+            const globalErrorStore = useGlobalErrorStore();
+            globalErrorStore.setErrorMessage(err.response.data.message);
         }
-    } else {
-        const globalErrorStore = useGlobalErrorStore();
-        globalErrorStore.setErrorMessage(err.response.data.message);
     }
 
     return Promise.reject(err);
