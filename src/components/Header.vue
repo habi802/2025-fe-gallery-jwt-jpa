@@ -15,8 +15,8 @@ const logoutAccount = async () => {
     return;
   }
 
-  alert('로그아웃 되었슴당.');
-  account.setLoggedIn(false);
+  //account.setLoggedIn(false);
+  account.logout();
 }
 </script>
 
@@ -28,7 +28,7 @@ const logoutAccount = async () => {
           <strong>Gallery</strong>
         </router-link>
         <div class="menus d-flex gap-3">
-          <template v-if="account.state.loggedIn">
+          <template v-if="account.state.isSigned">
             <a @click="logoutAccount()">로그아웃</a>
             <router-link to="/orders">주문 내역</router-link>
             <router-link to="/cart">장바구니</router-link>
