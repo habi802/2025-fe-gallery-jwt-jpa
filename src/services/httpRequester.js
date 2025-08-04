@@ -20,6 +20,9 @@ axios.interceptors.response.use(res => res, async err => {
                 accountStore.logout();
             }
         }
+    } else {
+        const globalErrorStore = useGlobalErrorStore();
+        globalErrorStore.setErrorMessage(err.response.data.message);
     }
 
     return Promise.reject(err);
