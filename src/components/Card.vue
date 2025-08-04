@@ -4,7 +4,7 @@
   import { addItem } from '@/services/cartService';
   import { useRouter } from 'vue-router';
 
-  const account = useAccountStore();
+  const accountStore = useAccountStore();
   const router = useRouter();
 
   // 프로퍼티 객체
@@ -25,7 +25,7 @@
 
   // 장바구니에 상품 담기
   const put = async () => {
-    if (!account.state.loggedIn) {
+    if (!accountStore.state.isSigned) {
       alert('로그인해주세요.');
       return;
     }
