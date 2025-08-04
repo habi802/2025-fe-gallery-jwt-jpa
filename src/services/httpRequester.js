@@ -8,6 +8,7 @@ axios.defaults.withCredentials = true;
 
 axios.interceptors.response.use(res => res, async err => {
     console.log('err:', err);
+    console.log('err.response:', err.response);
     if (err.response) {
         const accountStore = useAccountStore();
         if (err.response.status === 401 && accountStore.state.isSigned) {
@@ -21,8 +22,10 @@ axios.interceptors.response.use(res => res, async err => {
                 accountStore.logout();
             }
         } else {
+            const message = err.response.data?.message ? err.response.data?.message : err.response.data;
+            
             const globalErrorStore = useGlobalErrorStore();
-            globalErrorStore.setErrorMessage(err.response.data.message);
+            globalErrorStore.setErrorMessage(message);
         }
     }
 
