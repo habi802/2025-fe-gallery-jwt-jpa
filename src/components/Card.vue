@@ -7,6 +7,8 @@
   const accountStore = useAccountStore();
   const router = useRouter();
 
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+
   // 프로퍼티 객체
   const props = defineProps({
     item: {
@@ -47,7 +49,7 @@
 <template>
   <div class="card shadow-sm">
     <!-- 상품 사진 -->
-    <span class="img" :style="{backgroundImage: `url(/pic/item/${props.item.imgPath})`}" :aria-label="`상품 사진(${props.item.name})`"></span>
+    <span class="img" :style="{backgroundImage: `url(${baseUrl}/pic/item/${props.item.imgPath})`}" :aria-label="`상품 사진(${props.item.name})`"></span>
     <div class="card-body">
       <p class="card-text">
         <!-- 상품 이름 -->
