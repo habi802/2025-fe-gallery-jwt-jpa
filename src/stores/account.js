@@ -2,6 +2,7 @@ import { reactive } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useAccountStore = defineStore("account", () => {
+    // npm i pinia-plugin-persistedstate
     const state = reactive({
         // checked: false,
         // loggedIn: false
