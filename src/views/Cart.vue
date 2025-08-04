@@ -2,6 +2,8 @@
   import { getItems, removeItem, removeCart } from '@/services/cartService';
   import { onMounted, reactive, ref } from 'vue';
 
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+
   const state = reactive({
     items: []
   });
@@ -78,7 +80,7 @@
       <template v-if="state.items.length">
         <ul class="items">
           <li v-for="i in state.items" :key="i.id">
-            <img :alt="`상품 사진(${i.name})`" :src="`/pic/item/${i.imgPath}`" />
+            <img :alt="`상품 사진(${i.name})`" :src="`${baseUrl}/pic/item/${i.imgPath}`" />
             <b class="name">{{ i.name }}</b>
             <span class="price">
               {{ (i.price - i.price * i.discountPer / 100).toLocaleString() }}원
