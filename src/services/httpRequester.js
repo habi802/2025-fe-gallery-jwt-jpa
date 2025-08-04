@@ -4,6 +4,7 @@ import { useAccountStore } from "@/stores/account";
 import { useGlobalErrorStore } from "@/stores/global-error";
 
 axios.defaults.baseURL = `${import.meta.env.VITE_BASE_URL}/api/v1`;
+axios.defaults.withCredentials = true;
 
 axios.interceptors.response.use(res => res, async err => {
     console.log('err:', err);
